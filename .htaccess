@@ -1,0 +1,12 @@
+<IfModule mod_speling.c>
+CheckSpelling on
+</IfModule>
+
+Options +FollowSymLinks
+RewriteEngine on
+AddDefaultCharset UTF-8
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.*)/"
+RewriteRule ^(.+)$ index.php?q=$1 [L,QSA]
+RewriteRule \.(gif|jpe?g|png)$ - [F,NC,L]
